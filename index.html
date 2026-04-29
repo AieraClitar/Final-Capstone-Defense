@@ -676,6 +676,22 @@
             background: linear-gradient(90deg, var(--navy), var(--gold));
         }
 
+        .evaluation-slide {
+            padding-bottom: 86px;
+        }
+
+        .evaluation-slide .content-area {
+            justify-content: flex-start;
+        }
+
+        .evaluation-slide .chart-container {
+            gap: 10px;
+        }
+
+        .evaluation-slide .bar-outer {
+            height: 32px;
+        }
+
         .metric-strip {
             grid-template-columns: repeat(3, minmax(0, 1fr));
             margin-bottom: 22px;
@@ -700,6 +716,25 @@
             color: var(--teal);
             font-size: 30px;
             line-height: 1;
+        }
+
+        .evaluator-strip {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .evaluator-strip .metric-card {
+            min-height: 86px;
+            padding: 17px 18px;
+        }
+
+        .evaluator-strip .metric-card span {
+            font-size: 11px;
+        }
+
+        .evaluator-strip .metric-card strong {
+            font-size: 29px;
         }
 
         table {
@@ -1344,7 +1379,7 @@
                 </div>
             </section>
 
-            <section class="slide-container" id="slide17">
+            <section class="slide-container evaluation-slide" id="slide17">
                 <h2 class="slide-title">Technical Evaluation</h2>
                 <div class="content-area">
                     <div class="metric-strip">
@@ -1365,12 +1400,14 @@
                 </div>
             </section>
 
-            <section class="slide-container" id="slide18">
+            <section class="slide-container evaluation-slide" id="slide18">
                 <h2 class="slide-title">Non-Technical Evaluation</h2>
                 <div class="content-area">
-                    <div class="metric-strip">
+                    <div class="metric-strip evaluator-strip">
                         <div class="metric-card"><span>End Users</span><strong>20</strong></div>
                         <div class="metric-card"><span>Patients</span><strong>18</strong></div>
+                        <div class="metric-card"><span>Dentist</span><strong>1</strong></div>
+                        <div class="metric-card"><span>Assistant</span><strong>1</strong></div>
                         <div class="metric-card"><span>Overall</span><strong>4.71</strong></div>
                     </div>
                     <div class="chart-container">
