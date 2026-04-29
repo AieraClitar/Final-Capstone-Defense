@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Defense - Flores Basa Dental Clinic</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <style>
+        :root {
+            --ink: #07111f;
+            --navy: #08233f;
+            --navy-2: #0f3154;
+            --teal: #008f8c;
+            --teal-2: #26b6aa;
+            --mint: #dff6f2;
+            --gold: #d7a94c;
+            --coral: #d86d5b;
+            --paper: #fbfcfb;
+            --soft: #f1f6f5;
+            --line: #d7e4e2;
+            --muted: #5f7081;
+            --white: #ffffff;
+            --shadow: 0 28px 70px rgba(2, 13, 26, 0.42);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            font-family: "Aptos", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background:
+                linear-gradient(135deg, #06111f 0%, #10243a 46%, #081522 100%),
+                linear-gradient(90deg, rgba(0, 143, 140, 0.16), rgba(215, 169, 76, 0.13));
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.25;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: linear-gradient(120deg, transparent 0%, black 20%, black 78%, transparent 100%);
+        }
+
+        .presentation-wrapper {
+            position: relative;
+            width: min(1280px, calc(100vw - 32px));
+            aspect-ratio: 16 / 9;
+            max-height: calc(100vh - 32px);
+            overflow: hidden;
+            isolation: isolate;
+            border-radius: 22px;
+            background: var(--paper);
+            box-shadow: var(--shadow), 0 0 0 1px rgba(255, 255, 255, 0.16);
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .slide-container {
+            position: relative;
+            flex: 0 0 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 52px 112px 58px;
+            background:
+                linear-gradient(115deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 251, 250, 0.96) 55%, rgba(232, 245, 242, 0.9) 100%);
+        }
+
+        .slide-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, rgba(0, 143, 140, 0.12) 0 2px, transparent 2px 100%),
+                linear-gradient(180deg, rgba(8, 35, 63, 0.08), transparent 22%);
+        }
+
+        .slide-container::after {
+            content: "";
+            position: absolute;
+            top: -4%;
+            right: -6%;
+            width: 42%;
+            height: 108%;
+            pointer-events: none;
+            opacity: 0.45;
+            clip-path: polygon(36% 0, 100% 0, 100% 100%, 0 100%);
+            background:
+                repeating-linear-gradient(-38deg, rgba(0, 143, 140, 0.16) 0 1px, transparent 1px 18px),
+                linear-gradient(180deg, rgba(215, 169, 76, 0.13), rgba(0, 143, 140, 0.08));
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--navy);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        p,
+        li,
+        td {
+            color: var(--muted);
+            line-height: 1.48;
+            font-size: 19px;
+        }
+
+        strong {
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .content-area {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            margin-bottom: 16px;
+            padding: 7px 12px;
+            border: 1px solid rgba(0, 143, 140, 0.24);
+            border-radius: 999px;
+            color: var(--teal);
+            background: rgba(223, 246, 242, 0.78);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .slide-title {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 26px;
+            color: var(--navy);
+            font-size: 36px;
+        }
+
+        .slide-title::before {
+            content: "";
+            width: 8px;
+            height: 44px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--teal), var(--gold));
+            box-shadow: 0 8px 24px rgba(0, 143, 140, 0.24);
+        }
+
+        .kicker-text {
+            max-width: 860px;
+            margin-bottom: 26px;
+            color: #31495e;
+            font-size: 24px;
+            font-weight: 650;
+            line-height: 1.36;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 28px;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .panel,
+        .tile,
+        .metric-card,
+        .demo-step,
+        .roadmap-item,
+        .problem-card {
+            border: 1px solid rgba(8, 35, 63, 0.11);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 18px 40px rgba(8, 35, 63, 0.08);
+        }
+
+        .panel {
+            padding: 28px;
+        }
+
+        .panel h3,
+        .tile h3,
+        .problem-card h3,
+        .demo-step h3,
+        .roadmap-item h3 {
+            margin-bottom: 10px;
+            font-size: 23px;
+        }
+
+        .bullet-list {
+            display: grid;
+            gap: 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .bullet-list li {
+            position: relative;
+            min-height: 36px;
+            padding-left: 48px;
+        }
+
+        .bullet-list i {
+            position: absolute;
+            top: 1px;
+            left: 0;
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            color: var(--teal);
+            background: var(--mint);
+            font-size: 18px;
+        }
+
+        .feature-grid,
+        .tiled-content,
+        .problem-grid,
+        .metric-strip,
+        .demo-grid {
+            display: grid;
+            gap: 18px;
+            width: 100%;
+        }
+
+        .feature-grid,
+        .tiled-content,
+        .problem-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .tile,
+        .problem-card {
+            position: relative;
+            overflow: hidden;
+            padding: 25px;
+        }
+
+        .tile::before,
+        .problem-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+        }
+
+        .tile .icon,
+        .problem-card .icon,
+        .demo-step .icon {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--teal), var(--navy-2));
+            box-shadow: 0 12px 24px rgba(0, 143, 140, 0.2);
+            font-size: 24px;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 11px;
+            border-radius: 999px;
+            color: var(--navy);
+            background: #eef7f5;
+            border: 1px solid var(--line);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .cover-slide {
+            padding: 54px 88px;
+            color: var(--white);
+            background: #071827;
+        }
+
+        .cover-slide::before {
+            z-index: 1;
+            background:
+                linear-gradient(135deg, rgba(5, 20, 32, 0.9) 0%, rgba(5, 20, 32, 0.72) 48%, rgba(5, 20, 32, 0.86) 100%),
+                linear-gradient(135deg, rgba(0, 143, 140, 0.28), rgba(215, 169, 76, 0.12));
+        }
+
+        .cover-slide::after {
+            z-index: 1;
+            opacity: 0.55;
+            background:
+                repeating-linear-gradient(-40deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 22px),
+                linear-gradient(180deg, rgba(0, 143, 140, 0.22), rgba(215, 169, 76, 0.18));
+        }
+
+        .cover-photo {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.08) contrast(1.05);
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            max-width: 940px;
+            margin: 0 auto;
+            padding-bottom: 34px;
+            text-align: center;
+        }
+
+        .brand-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            width: fit-content;
+            margin-bottom: 34px;
+            padding: 10px 16px 10px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 14px;
+            font-weight: 800;
+            backdrop-filter: blur(14px);
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            border: 2px solid rgba(255, 255, 255, 0.72);
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--white);
+        }
+
+        .cover-content .eyebrow {
+            color: #b9fff4;
+            border-color: rgba(185, 255, 244, 0.26);
+            background: rgba(0, 143, 140, 0.18);
+        }
+
+        .cover-content h1 {
+            max-width: 840px;
+            color: var(--white);
+            font-size: 56px;
+            line-height: 1.02;
+        }
+
+        .cover-content .subtitle {
+            max-width: 720px;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 24px;
+            font-weight: 650;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr 1fr;
+            gap: 12px;
+            width: min(860px, 100%);
+            margin-top: 32px;
+        }
+
+        .meta-card {
+            min-height: 90px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        .meta-card span {
+            display: block;
+            margin-bottom: 7px;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .meta-card p {
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 15px;
+            line-height: 1.38;
+            text-align: center;
+        }
+
+        .section-title-layout {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background:
+                linear-gradient(135deg, #061523 0%, #0c2b49 58%, #063335 100%);
+        }
+
+        .section-title-layout::before {
+            background:
+                linear-gradient(90deg, rgba(215, 169, 76, 0.25) 0 2px, transparent 2px 100%),
+                linear-gradient(135deg, rgba(0, 143, 140, 0.3), rgba(255, 255, 255, 0.02));
+        }
+
+        .section-title-layout .content-area {
+            align-items: center;
+        }
+
+        .chapter-number {
+            margin-bottom: 18px;
+            color: rgba(255, 255, 255, 0.22);
+            font-size: 112px;
+            font-weight: 900;
+            line-height: 0.85;
+        }
+
+        .section-title-layout h2 {
+            max-width: 940px;
+            color: var(--white);
+            font-size: 64px;
+            line-height: 1;
+        }
+
+        .section-rule {
+            width: 180px;
+            height: 6px;
+            margin: 24px auto;
+            border: 0;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--teal-2), var(--gold));
+        }
+
+        .section-subtitle {
+            max-width: 680px;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        .spotlight-layout {
+            display: grid;
+            grid-template-columns: 0.82fr 1.18fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .spotlight-number {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 84px;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .spotlight-copy {
+            color: #31495e;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .objective-callout {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100%;
+            padding: 32px;
+            border-left: 7px solid var(--teal);
+            background:
+                linear-gradient(135deg, rgba(223, 246, 242, 0.9), rgba(255, 255, 255, 0.86)),
+                var(--white);
+        }
+
+        .objective-callout h3 {
+            margin-bottom: 16px;
+            color: var(--teal);
+            font-size: 28px;
+        }
+
+        .steps-list {
+            counter-reset: step;
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .steps-list li {
+            counter-increment: step;
+            position: relative;
+            padding: 13px 14px 13px 52px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.72);
+            color: #42576a;
+            font-size: 17px;
+            line-height: 1.34;
+        }
+
+        .steps-list li::before {
+            content: counter(step, decimal-leading-zero);
+            position: absolute;
+            top: 13px;
+            left: 14px;
+            color: var(--teal);
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .timeline-layout {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .timeline-layout::before {
+            content: "";
+            position: absolute;
+            top: 36px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            z-index: 1;
+            padding: 0 8px;
+            text-align: center;
+        }
+
+        .timeline-circle {
+            display: grid;
+            place-items: center;
+            width: 74px;
+            height: 74px;
+            margin: 0 auto 18px;
+            border: 7px solid var(--paper);
+            border-radius: 50%;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--teal), var(--navy));
+            box-shadow: 0 16px 30px rgba(0, 143, 140, 0.22);
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .timeline-item h3 {
+            font-size: 22px;
+        }
+
+        .timeline-item p {
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        .chart-container {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .bar {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 18px;
+            align-items: center;
+        }
+
+        .bar-label {
+            color: var(--navy);
+            text-align: right;
+            font-size: 16px;
+            font-weight: 850;
+        }
+
+        .bar-outer {
+            height: 34px;
+            overflow: hidden;
+            border: 1px solid #dce8e6;
+            border-radius: 999px;
+            background: #eef5f3;
+        }
+
+        .bar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            min-width: 62px;
+            padding-right: 14px;
+            color: var(--white);
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-2));
+            font-size: 14px;
+            font-weight: 900;
+            box-shadow: inset -18px 0 20px rgba(255, 255, 255, 0.13);
+        }
+
+        .bar-inner.overall {
+            background: linear-gradient(90deg, var(--navy), var(--gold));
+        }
+
+        .metric-strip {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-bottom: 22px;
+        }
+
+        .metric-card {
+            padding: 18px 20px;
+        }
+
+        .metric-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .metric-card strong {
+            display: block;
+            margin-top: 7px;
+            color: var(--teal);
+            font-size: 30px;
+            line-height: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 22px 45px rgba(8, 35, 63, 0.08);
+        }
+
+        th,
+        td {
+            padding: 13px 11px;
+            border-bottom: 1px solid var(--line);
+            text-align: center;
+        }
+
+        th {
+            color: var(--white);
+            background: var(--navy);
+            font-size: 13px;
+            font-weight: 850;
+            line-height: 1.2;
+        }
+
+        td {
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.86);
+        }
+
+        tbody tr:nth-child(even) td {
+            background: #f6fbfa;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        td.left-align {
+            color: var(--navy);
+            text-align: left;
+            font-weight: 850;
+        }
+
+        .check,
+        .cross {
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        .check {
+            color: var(--teal);
+        }
+
+        .cross {
+            color: var(--coral);
+        }
+
+        .demo-grid {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+
+        .demo-step {
+            position: relative;
+            min-height: 222px;
+            padding: 22px 18px;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(243, 249, 248, 0.9));
+        }
+
+        .demo-step::after {
+            content: attr(data-step);
+            position: absolute;
+            right: 14px;
+            bottom: 8px;
+            color: rgba(8, 35, 63, 0.08);
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .roadmap-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding: 22px 22px 22px 64px;
+        }
+
+        .roadmap-item i {
+            position: absolute;
+            left: 20px;
+            top: 23px;
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            color: var(--white);
+            background: var(--teal);
+        }
+
+        .thanks-slide {
+            color: var(--white);
+            text-align: center;
+            background:
+                linear-gradient(135deg, #061523 0%, #0b2b47 54%, #083736 100%);
+        }
+
+        .thanks-slide::before {
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 100%),
+                linear-gradient(180deg, rgba(215, 169, 76, 0.18), rgba(0, 143, 140, 0.16));
+        }
+
+        .thanks-slide .content-area {
+            align-items: center;
+        }
+
+        .thanks-logo {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 24px;
+            border: 4px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--white);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.25);
+        }
+
+        .thanks-slide h1 {
+            color: var(--white);
+            font-size: 82px;
+        }
+
+        .thanks-slide p {
+            margin-top: 18px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 28px;
+            font-weight: 650;
+        }
+
+        .presenters {
+            margin-top: 34px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .cover-content .presenters {
+            margin-top: 28px;
+        }
+
+        .nav-btn,
+        .utility-btn {
+            position: absolute;
+            z-index: 20;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(8, 35, 63, 0.13);
+            color: var(--navy);
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 14px 34px rgba(8, 35, 63, 0.15);
+            cursor: pointer;
+            transition: transform 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease;
+        }
+
+        .nav-btn {
+            top: 50%;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+        }
+
+        .nav-btn:hover,
+        .utility-btn:hover {
+            color: var(--white);
+            background: var(--teal);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .nav-btn.prev {
+            left: 24px;
+        }
+
+        .nav-btn.next {
+            right: 24px;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .utility-btn {
+            top: 20px;
+            right: 22px;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            transform: none;
+            font-size: 18px;
+        }
+
+        .utility-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .slide-counter {
+            position: absolute;
+            z-index: 20;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 7px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.26);
+            border-radius: 999px;
+            color: var(--white);
+            background: rgba(7, 17, 31, 0.72);
+            backdrop-filter: blur(12px);
+            font-size: 13px;
+            font-weight: 850;
+        }
+
+        .progress-container {
+            position: absolute;
+            z-index: 20;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            background: rgba(8, 35, 63, 0.14);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+            transition: width 360ms ease;
+        }
+
+        @media (max-width: 900px) {
+            .presentation-wrapper {
+                width: 100vw;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .slide-container {
+                padding: 42px 78px 54px;
+            }
+
+            .cover-content h1 {
+                font-size: 42px;
+            }
+
+            .section-title-layout h2 {
+                font-size: 46px;
+            }
+
+            .two-column,
+            .spotlight-layout,
+            .feature-grid,
+            .tiled-content,
+            .problem-grid,
+            .roadmap-list,
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            p,
+            li {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-wrapper" aria-live="polite">
+        <button class="nav-btn prev" id="prevBtn" type="button" onclick="moveSlide(-1)" aria-label="Previous slide">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="nav-btn next" id="nextBtn" type="button" onclick="moveSlide(1)" aria-label="Next slide">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+        <button class="utility-btn" id="fullscreenBtn" type="button" aria-label="Toggle fullscreen">
+            <i class="bi bi-fullscreen"></i>
+        </button>
+        <div class="slide-counter" id="slideCounter">1 / 23</div>
+        <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+        <div class="slider-track" id="sliderTrack">
+            <section class="slide-container cover-slide" id="slide1">
+                <div class="cover-photo" aria-hidden="true">
+                    <img src="assets/images/DentaSemiBack.jpg" alt="">
+                </div>
+                <div class="cover-content">
+                    <div class="brand-row">
+                        <img class="logo-mark" src="assets/images/BasaDentalLogo.jpg" alt="Flores Basa Dental Clinic logo">
+                        <span>Flores Basa Dental Clinic</span>
+                    </div>
+                    <span class="eyebrow">Final Defense Presentation</span>
+                    <h1>Development of Record-Keeping System</h1>
+                    <p class="subtitle">A web-based platform for secure patient records, appointment workflows, and clinic communication.</p>
+                    <div class="metadata-grid">
+                        <div class="meta-card">
+                            <span>Proponents</span>
+                            <p>Jerome G. Orbita<br>Monica C. Daang<br>Shekenah P. Rellin</p>
+                        </div>
+                        <div class="meta-card">
+                            <span>Adviser</span>
+                            <p>Prof. Jake R. Ersando</p>
+                        </div>
+                        <div class="meta-card">
+                            <span>Technical Critic</span>
+                            <p>Mr. James Carlo C. Astilla</p>
+                        </div>
+                    </div>
+                    <div class="presenters">Cavite State University - Indang, Cavite | CEIT College</div>
+                </div>
+            </section>
+
+            <section class="slide-container section-title-layout" id="slide2">
+                <div class="content-area">
+                    <div class="chapter-number">01</div>
+                    <span class="eyebrow">Context</span>
+                    <h2>Introduction</h2>
+                    <hr class="section-rule">
+                    <p class="section-subtitle">Why the clinic needs a secure, accurate, and faster record-keeping workflow.</p>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide3">
+                <h2 class="slide-title">Introduction</h2>
+                <div class="content-area">
+                    <div class="spotlight-layout">
+                        <div>
+                            <span class="spotlight-number">4</span>
+                            <p class="spotlight-copy">Operational realities shaped the system: manual records, digital transformation, daily clinic workload, and web-based centralization.</p>
+                        </div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-folder2-open"></i><strong>Traditional Dental Record-Keeping:</strong> The clinic currently relies on physical files and index cards.</li>
+                            <li><i class="bi bi-laptop"></i><strong>Digital Transformation:</strong> The workflow needs to shift from manual processing to an automated digital environment.</li>
+                            <li><i class="bi bi-exclamation-triangle"></i><strong>Operational Challenges:</strong> Large volumes of patient records create inefficiencies and retrieval delays.</li>
+                            <li><i class="bi bi-globe2"></i><strong>Web-Based Record Management:</strong> Web technologies can centralize, protect, and organize clinical data.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide4">
+                <h2 class="slide-title">Statement of the Problem</h2>
+                <div class="content-area">
+                    <p class="kicker-text">The existing process creates avoidable administrative friction and exposes clinic information to physical record risks.</p>
+                    <div class="problem-grid">
+                        <div class="problem-card">
+                            <div class="icon"><i class="bi bi-person-workspace"></i></div>
+                            <h3>Excessive Staff Workload</h3>
+                            <p>Manual filing and time-consuming data retrieval increase the burden on clinic staff.</p>
+                        </div>
+                        <div class="problem-card">
+                            <div class="icon"><i class="bi bi-file-earmark-x"></i></div>
+                            <h3>Incomplete or Fading Information</h3>
+                            <p>Pencil-written entries may fade, while index cards can tear or become misplaced over time.</p>
+                        </div>
+                        <div class="problem-card">
+                            <div class="icon"><i class="bi bi-shield-exclamation"></i></div>
+                            <h3>Storage and Security Limits</h3>
+                            <p>Physical cabinets consume space and do not provide digital backup or controlled access.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide5">
+                <h2 class="slide-title">Objectives of the Study</h2>
+                <div class="content-area">
+                    <div class="two-column">
+                        <div class="panel objective-callout">
+                            <h3>General Objective</h3>
+                            <p>Provide a computerized platform that improves the accuracy, efficiency, and security of managing patient information for Flores Basa Dental Clinic.</p>
+                        </div>
+                        <div class="panel">
+                            <h3>Specific Objectives</h3>
+                            <ol class="steps-list">
+                                <li>Analyze gathered data using fishbone diagrams to understand clinic challenges.</li>
+                                <li>Design system modules for general clinic operations.</li>
+                                <li>Develop the solution with PHP and MySQL for secure storage and retrieval.</li>
+                                <li>Test and evaluate using ISO/IEC 25010 standards.</li>
+                                <li>Prepare a comprehensive implementation plan.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide6">
+                <h2 class="slide-title">Purpose and Description</h2>
+                <div class="content-area">
+                    <div class="two-column">
+                        <div class="panel">
+                            <span class="eyebrow">Purpose</span>
+                            <ul class="bullet-list">
+                                <li><i class="bi bi-bullseye"></i>Lessen clinic staff workload.</li>
+                                <li><i class="bi bi-lock"></i>Provide a secure computerized platform.</li>
+                                <li><i class="bi bi-link-45deg"></i>Serve as a digital bridge between patients and the clinic.</li>
+                            </ul>
+                        </div>
+                        <div class="panel">
+                            <span class="eyebrow">Capabilities</span>
+                            <ul class="bullet-list">
+                                <li><i class="bi bi-person-check"></i>Secure access for authorized users.</li>
+                                <li><i class="bi bi-calendar2-check"></i>Online appointment booking.</li>
+                                <li><i class="bi bi-journal-medical"></i>Patient records and dental history management.</li>
+                                <li><i class="bi bi-chat-dots"></i>Automated SMS and email notifications.</li>
+                                <li><i class="bi bi-speedometer2"></i>Dashboard for clinic performance tracking.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide7">
+                <h2 class="slide-title">Scope and Limitations</h2>
+                <div class="content-area">
+                    <div class="tiled-content">
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-people"></i></div>
+                            <h3>Target Users</h3>
+                            <p>Dentist, clinic staff, and patients.</p>
+                            <div class="pill-row"><span class="pill">Role-Based Access</span><span class="pill">Patient Portal</span></div>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-boxes"></i></div>
+                            <h3>System Modules</h3>
+                            <p>Patient module, admin/dentist module, and appointment scheduler module.</p>
+                            <div class="pill-row"><span class="pill">Records</span><span class="pill">Appointments</span><span class="pill">Reports</span></div>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-slash-circle"></i></div>
+                            <h3>Limitations</h3>
+                            <p>No real-time telehealth consultations and no online payment integration.</p>
+                            <div class="pill-row"><span class="pill">No Telehealth</span><span class="pill">No Payments</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container section-title-layout" id="slide8">
+                <div class="content-area">
+                    <div class="chapter-number">02</div>
+                    <span class="eyebrow">Evidence Base</span>
+                    <h2>Review of Related Literature</h2>
+                    <hr class="section-rule">
+                    <p class="section-subtitle">A feature comparison showing how the proposed system aligns with and extends related studies.</p>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide9">
+                <h2 class="slide-title">Comparison with Related Studies</h2>
+                <div class="content-area">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Features / Modules</th>
+                                <th>Palaniappan<br>(2024)</th>
+                                <th>Halid et al.<br>(2023)</th>
+                                <th>Ganiron Jr.<br>(2023)</th>
+                                <th>Mahlangu<br>(2023)</th>
+                                <th>Flores Basa<br>System</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="left-align">Patient Management</td>
+                                <td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td class="left-align">Online Scheduling</td>
+                                <td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td class="left-align">EMR Integration</td>
+                                <td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td class="left-align">Automated SMS/Email</td>
+                                <td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td class="left-align">Security &amp; Backup</td>
+                                <td class="cross">&#10007;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="slide-container section-title-layout" id="slide10">
+                <div class="content-area">
+                    <div class="chapter-number">03</div>
+                    <span class="eyebrow">Process</span>
+                    <h2>Methodology</h2>
+                    <hr class="section-rule">
+                    <p class="section-subtitle">The study used Rapid Application Development to keep clinic feedback close to design and implementation.</p>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide11">
+                <h2 class="slide-title">Rapid Application Development (RAD)</h2>
+                <div class="content-area">
+                    <p class="kicker-text">RAD supported quick iteration, visible prototypes, and continuous validation from users throughout development.</p>
+                    <div class="timeline-layout">
+                        <div class="timeline-item">
+                            <div class="timeline-circle">1</div>
+                            <h3>Requirements</h3>
+                            <p>Identify clinic needs and user expectations.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-circle">2</div>
+                            <h3>User Design</h3>
+                            <p>Prototype interfaces and refine workflows.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-circle">3</div>
+                            <h3>Construction</h3>
+                            <p>Build modules using PHP and MySQL.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-circle">4</div>
+                            <h3>Cutover</h3>
+                            <p>Finalize testing, evaluation, and deployment plan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide12">
+                <h2 class="slide-title">Functional Requirements</h2>
+                <div class="content-area">
+                    <div class="feature-grid">
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-journal-medical"></i></div>
+                            <h3>Patient Management</h3>
+                            <p>Record, update, and manage patient information, including personal details and dental history.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-calendar2-week"></i></div>
+                            <h3>Appointment Scheduling</h3>
+                            <p>Automate booking procedures and send SMS/email reminders to patients.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-shield-lock"></i></div>
+                            <h3>Regulatory Compliance</h3>
+                            <p>Apply data protection through authentication, access control, and secure handling.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide13">
+                <h2 class="slide-title">Functional Requirements (Cont.)</h2>
+                <div class="content-area">
+                    <div class="two-column">
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-graph-up"></i></div>
+                            <h3>Reporting</h3>
+                            <p>Generate real-time reports such as patient treatment summaries and laboratory case progress.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-person-gear"></i></div>
+                            <h3>System Administration</h3>
+                            <p>Manage user accounts, assign role-based access, and maintain backup procedures.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide14">
+                <h2 class="slide-title">Non-Functional Requirements</h2>
+                <div class="content-area">
+                    <div class="feature-grid">
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-lightning-charge"></i></div>
+                            <h3>Performance</h3>
+                            <p>Pages and data must load quickly with reasonable application response time.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-check2-circle"></i></div>
+                            <h3>Reliability</h3>
+                            <p>The system should operate consistently and save patient medical data without unexpected loss.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-lock"></i></div>
+                            <h3>Security</h3>
+                            <p>Protect sensitive health data through encrypted credentials and access restrictions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide15">
+                <h2 class="slide-title">Non-Functional Requirements (Cont.)</h2>
+                <div class="content-area">
+                    <div class="feature-grid">
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-graph-up-arrow"></i></div>
+                            <h3>Scalability</h3>
+                            <p>The system must remain stable with multiple users and continued database growth.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-hand-index-thumb"></i></div>
+                            <h3>Usability</h3>
+                            <p>The interface must be intuitive and clearly labeled for non-technical clinic users.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-display"></i></div>
+                            <h3>Compatibility</h3>
+                            <p>The system must work across common browsers such as Chrome, Edge, and Safari.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container section-title-layout" id="slide16">
+                <div class="content-area">
+                    <div class="chapter-number">04</div>
+                    <span class="eyebrow">Validation</span>
+                    <h2>Results and Discussion</h2>
+                    <hr class="section-rule">
+                    <p class="section-subtitle">Technical and non-technical respondents rated the system as excellent.</p>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide17">
+                <h2 class="slide-title">Technical Evaluation</h2>
+                <div class="content-area">
+                    <div class="metric-strip">
+                        <div class="metric-card"><span>Evaluators</span><strong>10</strong></div>
+                        <div class="metric-card"><span>Framework</span><strong>ISO</strong></div>
+                        <div class="metric-card"><span>Overall</span><strong>4.43</strong></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="bar"><div class="bar-label">Compatibility</div><div class="bar-outer"><div class="bar-inner" style="width: 93%;">4.65</div></div></div>
+                        <div class="bar"><div class="bar-label">Usability</div><div class="bar-outer"><div class="bar-inner" style="width: 91%;">4.57</div></div></div>
+                        <div class="bar"><div class="bar-label">Reliability</div><div class="bar-outer"><div class="bar-inner" style="width: 90%;">4.50</div></div></div>
+                        <div class="bar"><div class="bar-label">Functional Suitability</div><div class="bar-outer"><div class="bar-inner" style="width: 89%;">4.47</div></div></div>
+                        <div class="bar"><div class="bar-label">Performance Efficiency</div><div class="bar-outer"><div class="bar-inner" style="width: 88%;">4.40</div></div></div>
+                        <div class="bar"><div class="bar-label">Portability</div><div class="bar-outer"><div class="bar-inner" style="width: 88%;">4.40</div></div></div>
+                        <div class="bar"><div class="bar-label">Maintainability</div><div class="bar-outer"><div class="bar-inner" style="width: 81%;">4.05</div></div></div>
+                        <div class="bar"><div class="bar-label">Overall Average</div><div class="bar-outer"><div class="bar-inner overall" style="width: 88.6%;">4.43 Excellent</div></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide18">
+                <h2 class="slide-title">Non-Technical Evaluation</h2>
+                <div class="content-area">
+                    <div class="metric-strip">
+                        <div class="metric-card"><span>End Users</span><strong>20</strong></div>
+                        <div class="metric-card"><span>Patients</span><strong>18</strong></div>
+                        <div class="metric-card"><span>Overall</span><strong>4.71</strong></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="bar"><div class="bar-label">User Satisfaction</div><div class="bar-outer"><div class="bar-inner" style="width: 97%;">4.86</div></div></div>
+                        <div class="bar"><div class="bar-label">Performance Efficiency</div><div class="bar-outer"><div class="bar-inner" style="width: 95%;">4.75</div></div></div>
+                        <div class="bar"><div class="bar-label">Usability</div><div class="bar-outer"><div class="bar-inner" style="width: 93%;">4.67</div></div></div>
+                        <div class="bar"><div class="bar-label">Accessibility</div><div class="bar-outer"><div class="bar-inner" style="width: 93%;">4.65</div></div></div>
+                        <div class="bar"><div class="bar-label">Scalability</div><div class="bar-outer"><div class="bar-inner" style="width: 92%;">4.63</div></div></div>
+                        <div class="bar"><div class="bar-label">Overall Average</div><div class="bar-outer"><div class="bar-inner overall" style="width: 94.2%;">4.71 Excellent</div></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container section-title-layout" id="slide19">
+                <div class="content-area">
+                    <div class="chapter-number">05</div>
+                    <span class="eyebrow">Close</span>
+                    <h2>Summary, Conclusions, and Recommendations</h2>
+                    <hr class="section-rule">
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide20">
+                <h2 class="slide-title">Conclusions</h2>
+                <div class="content-area">
+                    <div class="feature-grid">
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-clipboard-check"></i></div>
+                            <h3>Modernized Operations</h3>
+                            <p>The developed system supports daily clinic workflows and secures patient information.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-award"></i></div>
+                            <h3>Standards-Based Evaluation</h3>
+                            <p>It was assessed using ISO/IEC 25010 characteristics for technical and non-technical quality.</p>
+                        </div>
+                        <div class="tile">
+                            <div class="icon"><i class="bi bi-star"></i></div>
+                            <h3>Excellent Ratings</h3>
+                            <p>The system received excellent ratings from both technical evaluators and end users.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide21">
+                <h2 class="slide-title">Recommendations</h2>
+                <div class="content-area">
+                    <div class="roadmap-list">
+                        <div class="roadmap-item">
+                            <i class="bi bi-arrow-up-right"></i>
+                            <h3>Modern Framework Migration</h3>
+                            <p>Refactor the native PHP codebase to Laravel or CodeIgniter for stronger scalability.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <i class="bi bi-credit-card"></i>
+                            <h3>Online Payment Gateway</h3>
+                            <p>Integrate GCash or PayMaya for consultation deposits and reduced no-shows.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <i class="bi bi-phone"></i>
+                            <h3>Dedicated Mobile App</h3>
+                            <p>Expand into Flutter or React Native for improved patient access on mobile devices.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <i class="bi bi-cloud-check"></i>
+                            <h3>Encrypted Cloud Backups</h3>
+                            <p>Establish automated backups to strengthen recovery and prevent data loss.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container" id="slide22">
+                <h2 class="slide-title">System Demo</h2>
+                <div class="content-area">
+                        <div class="demo-grid">
+                        <div class="demo-step" data-step="01">
+                            <div class="icon"><i class="bi bi-person-lock"></i></div>
+                            <h3>Login &amp; Roles</h3>
+                            <p>Show secure access and role-based navigation.</p>
+                        </div>
+                        <div class="demo-step" data-step="02">
+                            <div class="icon"><i class="bi bi-calendar2-check"></i></div>
+                            <h3>Appointments</h3>
+                            <p>Book, approve, update, and manage schedules.</p>
+                        </div>
+                        <div class="demo-step" data-step="03">
+                            <div class="icon"><i class="bi bi-folder2-open"></i></div>
+                            <h3>Patient Records</h3>
+                            <p>Open profiles, dental history, and treatment records.</p>
+                        </div>
+                        <div class="demo-step" data-step="04">
+                            <div class="icon"><i class="bi bi-chat-left-dots"></i></div>
+                            <h3>SMS / Email</h3>
+                            <p>Highlight automated reminders and notifications.</p>
+                        </div>
+                        <div class="demo-step" data-step="05">
+                            <div class="icon"><i class="bi bi-bar-chart"></i></div>
+                            <h3>Reports</h3>
+                            <p>Present dashboard insights and generated summaries.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container thanks-slide" id="slide23">
+                <div class="content-area">
+                    <img class="thanks-logo" src="assets/images/BasaDentalLogo.jpg" alt="Flores Basa Dental Clinic logo">
+                    <span class="eyebrow">Final Defense</span>
+                    <h1>Thank You</h1>
+                    <div class="presenters">Jerome G. Orbita | Monica C. Daang | Shekenah P. Rellin</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = Array.from(document.querySelectorAll(".slide-container"));
+        const track = document.getElementById("sliderTrack");
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const slideCounter = document.getElementById("slideCounter");
+        const progressBar = document.getElementById("progressBar");
+        const fullscreenBtn = document.getElementById("fullscreenBtn");
+        let touchStartX = 0;
+
+        function getSlideIndexFromHash() {
+            const match = window.location.hash.match(/^#slide(\d+)$/);
+            if (!match) return 0;
+            const index = Number(match[1]) - 1;
+            return Number.isFinite(index) ? Math.min(Math.max(index, 0), totalSlides - 1) : 0;
+        }
+
+        function updateUI(pushHash = false) {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+            slides.forEach((slide, index) => {
+                slide.setAttribute("aria-hidden", index === currentSlide ? "false" : "true");
+            });
+
+            if (pushHash) {
+                history.replaceState(null, "", `#slide${currentSlide + 1}`);
+            }
+        }
+
+        function goToSlide(index, pushHash = true) {
+            currentSlide = Math.min(Math.max(index, 0), totalSlides - 1);
+            updateUI(pushHash);
+        }
+
+        function moveSlide(direction) {
+            goToSlide(currentSlide + direction);
+        }
+
+        function toggleFullscreen() {
+            const wrapper = document.querySelector(".presentation-wrapper");
+            if (!document.fullscreenElement) {
+                wrapper.requestFullscreen?.();
+            } else {
+                document.exitFullscreen?.();
+            }
+        }
+
+        document.addEventListener("keydown", (event) => {
+            if (event.target && ["INPUT", "TEXTAREA", "SELECT"].includes(event.target.tagName)) return;
+
+            if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+                event.preventDefault();
+                moveSlide(1);
+            } else if (event.key === "ArrowLeft" || event.key === "PageUp") {
+                event.preventDefault();
+                moveSlide(-1);
+            } else if (event.key === "Home") {
+                goToSlide(0);
+            } else if (event.key === "End") {
+                goToSlide(totalSlides - 1);
+            } else if (event.key.toLowerCase() === "f") {
+                toggleFullscreen();
+            }
+        });
+
+        document.addEventListener("touchstart", (event) => {
+            touchStartX = event.changedTouches[0].clientX;
+        }, { passive: true });
+
+        document.addEventListener("touchend", (event) => {
+            const delta = event.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(delta) > 60) {
+                moveSlide(delta < 0 ? 1 : -1);
+            }
+        }, { passive: true });
+
+        fullscreenBtn.addEventListener("click", toggleFullscreen);
+        window.addEventListener("hashchange", () => goToSlide(getSlideIndexFromHash(), false));
+
+        currentSlide = getSlideIndexFromHash();
+        updateUI(false);
+    </script>
+</body>
+</html>
