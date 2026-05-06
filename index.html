@@ -33,6 +33,10 @@
             height: 100%;
         }
 
+        html {
+            background: #06111f;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -891,6 +895,19 @@
             font-weight: 700;
         }
 
+        .presenter-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 0;
+        }
+
+        .presenter-list span:not(:last-child)::after {
+            content: "|";
+            margin: 0 12px;
+            color: rgba(255, 255, 255, 0.52);
+        }
+
         .cover-content .presenters {
             margin-top: 28px;
         }
@@ -1020,6 +1037,410 @@
                 font-size: 16px;
             }
         }
+
+        @media (max-width: 700px) {
+            body {
+                overflow: hidden;
+                place-items: stretch;
+            }
+
+            body::before {
+                opacity: 0.16;
+                background-size: 44px 44px;
+            }
+
+            .presentation-wrapper {
+                width: 100vw;
+                height: 100vh;
+                height: 100dvh;
+                max-height: none;
+                aspect-ratio: auto;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .slider-track {
+                height: 100%;
+            }
+
+            .slide-container {
+                height: 100vh;
+                height: 100dvh;
+                min-height: 100vh;
+                min-height: 100dvh;
+                width: 100vw;
+                max-width: 100vw;
+                overflow-y: auto;
+                padding: 30px 22px 92px;
+                scrollbar-width: thin;
+            }
+
+            .slide-container::after {
+                right: -34%;
+                width: 78%;
+                opacity: 0.28;
+            }
+
+            .content-area {
+                justify-content: flex-start;
+                min-width: 0;
+                gap: 18px;
+            }
+
+            .slide-title {
+                gap: 12px;
+                margin-bottom: 22px;
+                font-size: clamp(28px, 8vw, 34px);
+                line-height: 1.08;
+            }
+
+            .slide-title::before {
+                width: 7px;
+                height: 38px;
+                flex: 0 0 auto;
+            }
+
+            .kicker-text,
+            .spotlight-copy,
+            .section-subtitle {
+                max-width: 100%;
+                font-size: 18px;
+            }
+
+            p,
+            li,
+            td {
+                font-size: 15px;
+                line-height: 1.45;
+            }
+
+            .cover-slide {
+                padding: 28px 20px 92px;
+            }
+
+            .cover-content {
+                justify-content: flex-start;
+                min-height: 100%;
+                width: calc(100vw - 40px);
+                min-width: 0;
+                max-width: calc(100vw - 40px);
+                padding: 18px 0 0;
+            }
+
+            .cover-content > *,
+            .thanks-slide .content-area > * {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            .brand-row {
+                gap: 10px;
+                max-width: 100%;
+                margin-bottom: 18px;
+                padding: 8px 12px 8px 8px;
+                font-size: 12px;
+                white-space: normal;
+            }
+
+            .logo-mark {
+                width: 42px;
+                height: 42px;
+            }
+
+            .cover-content .eyebrow,
+            .eyebrow {
+                max-width: 100%;
+                justify-content: center;
+                text-align: center;
+                font-size: 10px;
+                letter-spacing: 0.11em;
+            }
+
+            .cover-content .eyebrow {
+                margin-bottom: 12px;
+            }
+
+            .cover-content h1 {
+                width: 100%;
+                max-width: 330px;
+                font-size: clamp(26px, 7.6vw, 30px);
+                line-height: 1.04;
+                overflow-wrap: break-word;
+            }
+
+            .cover-content .subtitle {
+                width: 100%;
+                max-width: 280px;
+                margin-top: 12px;
+                font-size: 14px;
+                line-height: 1.38;
+                overflow-wrap: break-word;
+            }
+
+            .metadata-grid,
+            .metric-strip,
+            .evaluator-strip {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .metadata-grid {
+                gap: 10px;
+                margin-top: 22px;
+            }
+
+            .meta-card,
+            .metric-card,
+            .evaluator-strip .metric-card {
+                min-height: auto;
+                padding: 14px 16px;
+            }
+
+            .meta-card {
+                padding: 10px 14px;
+            }
+
+            .meta-card span {
+                margin-bottom: 4px;
+                font-size: 10px;
+            }
+
+            .meta-card p {
+                font-size: 13px;
+                line-height: 1.3;
+            }
+
+            .presenters,
+            .cover-content .presenters {
+                margin-top: 14px;
+                width: 100%;
+                max-width: 100%;
+                font-size: 14px;
+                line-height: 1.4;
+                overflow-wrap: anywhere;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .presenter-list {
+                display: grid;
+                gap: 5px;
+                justify-items: center;
+            }
+
+            .presenter-list span:not(:last-child)::after {
+                content: "";
+                margin: 0;
+            }
+
+            .section-title-layout {
+                padding-inline: 24px;
+            }
+
+            .section-title-layout .content-area {
+                justify-content: center;
+                align-items: center;
+            }
+
+            .chapter-number {
+                margin-bottom: 14px;
+                font-size: 78px;
+            }
+
+            .section-title-layout h2 {
+                font-size: clamp(36px, 12vw, 52px);
+                line-height: 1.05;
+            }
+
+            .section-rule {
+                width: 132px;
+                margin: 18px auto;
+            }
+
+            .two-column,
+            .spotlight-layout,
+            .feature-grid,
+            .tiled-content,
+            .problem-grid,
+            .roadmap-list,
+            .demo-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .panel,
+            .tile,
+            .problem-card,
+            .demo-step,
+            .roadmap-item {
+                padding: 20px;
+            }
+
+            .panel h3,
+            .tile h3,
+            .problem-card h3,
+            .demo-step h3,
+            .roadmap-item h3 {
+                font-size: 20px;
+            }
+
+            .bullet-list {
+                gap: 14px;
+            }
+
+            .bullet-list li {
+                padding-left: 42px;
+            }
+
+            .bullet-list i {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
+            .spotlight-number {
+                font-size: 58px;
+            }
+
+            .steps-list li {
+                padding: 12px 12px 12px 48px;
+                font-size: 15px;
+            }
+
+            .timeline-layout {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .timeline-layout::before {
+                display: none;
+            }
+
+            .timeline-item {
+                display: grid;
+                grid-template-columns: 62px minmax(0, 1fr);
+                column-gap: 14px;
+                align-items: center;
+                text-align: left;
+            }
+
+            .timeline-circle {
+                width: 58px;
+                height: 58px;
+                margin: 0;
+                border-width: 5px;
+                font-size: 20px;
+            }
+
+            .timeline-item p {
+                margin-top: 4px;
+                font-size: 14px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            th,
+            td {
+                padding: 11px 10px;
+                font-size: 13px;
+            }
+
+            .evaluation-slide {
+                padding-bottom: 96px;
+            }
+
+            .evaluation-slide .chart-container {
+                gap: 14px;
+            }
+
+            .bar {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .bar-label {
+                text-align: left;
+                font-size: 14px;
+            }
+
+            .bar-outer,
+            .evaluation-slide .bar-outer {
+                height: 30px;
+            }
+
+            .bar-inner {
+                justify-content: center;
+                padding-right: 10px;
+                font-size: 12px;
+            }
+
+            .demo-step {
+                min-height: auto;
+            }
+
+            .roadmap-item {
+                padding-left: 58px;
+            }
+
+            .thanks-logo {
+                width: 84px;
+                height: 84px;
+            }
+
+            .thanks-slide .content-area {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .thanks-slide h1 {
+                max-width: 320px;
+                font-size: clamp(42px, 14vw, 62px);
+                line-height: 1.02;
+            }
+
+            .thanks-slide p {
+                margin-top: 16px;
+                font-size: 22px;
+            }
+
+            .nav-btn {
+                top: auto;
+                bottom: 14px;
+                width: 44px;
+                height: 44px;
+                transform: none;
+                font-size: 20px;
+            }
+
+            .nav-btn:hover {
+                transform: none;
+            }
+
+            .nav-btn.prev {
+                left: 16px;
+            }
+
+            .nav-btn.next {
+                right: 16px;
+            }
+
+            .utility-btn {
+                top: 12px;
+                right: 12px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .slide-counter {
+                bottom: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1047,7 +1468,7 @@
                         <span>Flores Basa Dental Clinic</span>
                     </div>
                     <span class="eyebrow">Final Defense Presentation</span>
-                    <h1>Development of Record-Keeping System</h1>
+                    <h1>Development of<br>Record-Keeping System</h1>
                     <p class="subtitle">A web-based platform for secure patient records, appointment workflows, and clinic communication.</p>
                     <div class="metadata-grid">
                         <div class="meta-card">
@@ -1063,7 +1484,7 @@
                             <p>Mr. James Carlo C. Astilla</p>
                         </div>
                     </div>
-                    <div class="presenters">Cavite State University - Indang, Cavite | CEIT College</div>
+                    <div class="presenters">Cavite State University - Indang, Cavite<br>CEIT College</div>
                 </div>
             </section>
 
@@ -1384,7 +1805,7 @@
                 <div class="content-area">
                     <div class="metric-strip">
                         <div class="metric-card"><span>Evaluators</span><strong>10</strong></div>
-                        <div class="metric-card"><span>Framework</span><strong>ISO</strong></div>
+                        <div class="metric-card"><span>Framework</span><strong>ISO 25010</strong></div>
                         <div class="metric-card"><span>Overall</span><strong>4.43</strong></div>
                     </div>
                     <div class="chart-container">
@@ -1518,8 +1939,27 @@
                 <div class="content-area">
                     <img class="thanks-logo" src="assets/images/BasaDentalLogo.jpg" alt="Flores Basa Dental Clinic logo">
                     <span class="eyebrow">Final Defense</span>
-                    <h1>Thank You</h1>
-                    <div class="presenters">Jerome G. Orbita | Monica C. Daang | Shekenah P. Rellin</div>
+                    <h1>Thank you</h1>
+                    <p>We appreciate your time and attention.</p>
+                    <div class="presenters presenter-list">
+                        <span>Jerome G. Orbita</span>
+                        <span>Monica C. Daang</span>
+                        <span>Shekenah P. Rellin</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide-container thanks-slide" id="slide23">
+                <div class="content-area">
+                    <img class="thanks-logo" src="assets/images/BasaDentalLogo.jpg" alt="Flores Basa Dental Clinic logo">
+                    <span class="eyebrow">Final Defense</span>
+                    <h1>Capstone Defended</h1>
+                    <p>Thank You</p>
+                    <div class="presenters presenter-list">
+                        <span>Jerome G. Orbita</span>
+                        <span>Monica C. Daang</span>
+                        <span>Shekenah P. Rellin</span>
+                    </div>
                 </div>
             </section>
         </div>
